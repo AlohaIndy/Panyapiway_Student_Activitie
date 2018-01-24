@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model.Major;
-import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Service.MajorService;
+import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model.StudentHaveDutyByYearClass;
+import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Service.StudentHaveDutyByYearClassService;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "test/major")
-public class TestMajor {
+@RequestMapping(path = "admin/pim")
+public class admin_pim_studentHaveDutyByYearClass {
 
 	@Autowired
-	MajorService majorService;
-
+	StudentHaveDutyByYearClassService studentHaveDutyByYearClassService;
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Major> findAll(){
-		return majorService.findAll();
+	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyId(){
+		return studentHaveDutyByYearClassService.findByMajorIdAndDutyId(401, 01);
 	}
-
+	
 }

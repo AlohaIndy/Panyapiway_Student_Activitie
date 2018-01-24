@@ -9,7 +9,7 @@ import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model.Major;
 
 public interface MajorRepository extends JpaRepository<Major, Integer>{
 
-	@Query(value = "select m from Major m order by m.id asc")
+	@Query(value = "SELECT * FORM MAJOR",nativeQuery = true)
 	public List<Major> findAll();
 	
 }

@@ -12,7 +12,7 @@ public interface FacultyRepository extends JpaRepository<Faculty, Integer> {
 	@Query(value = "select f from Faculty f order by f.id asc")
 	public List<Faculty> findAll();
 	
-	@Query(value = "select f from Faculty f where f.id = ?1 order by f.id asc")
+	@Query(value = "select f from Faculty f where f.id = ?1")
 	public Faculty findById(Integer id);
 	
 	@Query(value = "select f from Faculty f where f.name = ?1 order by f.id asc")

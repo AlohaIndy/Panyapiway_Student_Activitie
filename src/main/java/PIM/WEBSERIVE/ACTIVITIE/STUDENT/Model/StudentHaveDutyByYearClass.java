@@ -31,6 +31,7 @@ public class StudentHaveDutyByYearClass implements java.io.Serializable {
 	private StudentHaveDuty studentHaveDuty;
 	@JsonSerialize(as = YearClass.class)
 	private YearClass yearClass;
+	private Integer canDo;
 	private Integer limitPerStudyLevel;
 	private String status;
 	@JsonIgnore
@@ -84,6 +85,15 @@ public class StudentHaveDutyByYearClass implements java.io.Serializable {
 
 	public void setYearClass(YearClass yearClass) {
 		this.yearClass = yearClass;
+	}
+	
+	@Column(name = "can_do")
+	public Integer getCanDo() {
+		return this.canDo;
+	}
+
+	public void setCanDo(Integer canDo) {
+		this.canDo = canDo;
 	}
 
 	@Column(name = "limit_per_study_level")

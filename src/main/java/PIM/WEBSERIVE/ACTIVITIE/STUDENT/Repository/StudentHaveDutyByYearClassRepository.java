@@ -6,13 +6,22 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model.StudentHaveDutyByYearClass;
 
-public interface StudentHaveDutyByYearClassRepository extends JpaRepository<StudentHaveDutyByYearClass, Long>{
+public interface StudentHaveDutyByYearClassRepository extends JpaRepository<StudentHaveDutyByYearClass, Long> {
 
 	public List<StudentHaveDutyByYearClass> findAll();
-	
+
 	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyId(int dutyId);
+
+	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyIdAndStudentHaveDutyStudentMajorId(int dutyId,
+			int majorId);
+
+	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyIdAndStudentHaveDutyStudentId(int dutyId,
+			long studentId);
+
+	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyIdAndStudentHaveDutyStudentMajorIdAndStudentHaveDutyStudentYearClassIdAndStudentHaveDutyStudentId(
+			int dutyId,int majorId,int yearClassIdStudent,Long studentId);
 	
-	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyStudentMajorIdAndStudentHaveDutyDutyId(int majorId,int dutyId);
+	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyIdAndStudentHaveDutyStudentMajorIdAndStudentHaveDutyStudentYearClassId(
+			int dutyId,int majorId,int yearClassIdStudent);
 	
-	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyStudentIdAndStudentHaveDutyDutyId(Long studentId,int dutyId);
 }

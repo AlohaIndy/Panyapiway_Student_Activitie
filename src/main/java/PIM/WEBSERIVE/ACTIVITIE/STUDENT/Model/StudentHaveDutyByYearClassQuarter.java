@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
@@ -29,7 +30,7 @@ public class StudentHaveDutyByYearClassQuarter implements java.io.Serializable {
 	private Long id;
 	@JsonSerialize(as = Quarter.class)
 	private Quarter quarter;
-	@JsonSerialize(as = StudentHaveDutyByYearClass.class)
+	@JsonManagedReference("StudentHaveDutyByYearClassQuarter")
 	private StudentHaveDutyByYearClass studentHaveDutyByYearClass;
 	private Integer canDo;
 	private Integer averagePerQuarter;

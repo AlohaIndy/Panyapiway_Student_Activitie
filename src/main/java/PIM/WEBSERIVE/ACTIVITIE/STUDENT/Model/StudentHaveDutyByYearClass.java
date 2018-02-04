@@ -2,7 +2,9 @@ package PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model;
 // default package
 // Generated 22 �.�. 2561, 22:56:21 by Hibernate Tools 4.3.5.Final
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
@@ -27,16 +30,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class StudentHaveDutyByYearClass implements java.io.Serializable {
 
 	private Long id;
-	@JsonSerialize(as = StudentHaveDuty.class)
+	@JsonManagedReference("StudentHaveDutyByYearClass")
 	private StudentHaveDuty studentHaveDuty;
 	@JsonSerialize(as = YearClass.class)
 	private YearClass yearClass;
 	private Integer canDo;
 	private Integer limitPerStudyLevel;
 	private String status;
-	@JsonIgnore
-	private Set<StudentHaveDutyByYearClassQuarter> studentHaveDutyByYearClassQuarters = new HashSet<StudentHaveDutyByYearClassQuarter>(
-			0);
+	@JsonBackReference("StudentHaveDutyByYearClassQuarter")
+	private List<StudentHaveDutyByYearClassQuarter> studentHaveDutyByYearClassQuarters = new ArrayList<>();
 
 	public StudentHaveDutyByYearClass() {
 	}
@@ -47,7 +49,7 @@ public class StudentHaveDutyByYearClass implements java.io.Serializable {
 	}
 
 	public StudentHaveDutyByYearClass(StudentHaveDuty studentHaveDuty, YearClass yearClass, Integer limitPerStudyLevel,
-			String status, Set<StudentHaveDutyByYearClassQuarter> studentHaveDutyByYearClassQuarters) {
+			String status, List<StudentHaveDutyByYearClassQuarter> studentHaveDutyByYearClassQuarters) {
 		this.studentHaveDuty = studentHaveDuty;
 		this.yearClass = yearClass;
 		this.limitPerStudyLevel = limitPerStudyLevel;
@@ -115,12 +117,12 @@ public class StudentHaveDutyByYearClass implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "studentHaveDutyByYearClass")
-	public Set<StudentHaveDutyByYearClassQuarter> getStudentHaveDutyByYearClassQuarters() {
+	public List<StudentHaveDutyByYearClassQuarter> getStudentHaveDutyByYearClassQuarters() {
 		return this.studentHaveDutyByYearClassQuarters;
 	}
 
 	public void setStudentHaveDutyByYearClassQuarters(
-			Set<StudentHaveDutyByYearClassQuarter> studentHaveDutyByYearClassQuarters) {
+			List<StudentHaveDutyByYearClassQuarter> studentHaveDutyByYearClassQuarters) {
 		this.studentHaveDutyByYearClassQuarters = studentHaveDutyByYearClassQuarters;
 	}
 

@@ -14,5 +14,7 @@ public interface EmailRepository extends JpaRepository<Email, Long> {
 
 	@Query(value = "SELECT * FORM EMAIL WHERE EMAIL.ID = ?1", nativeQuery = true)
 	public Email findById(Long id);
+	
+	public Email findByPersonId(long idPerson);
 
 }

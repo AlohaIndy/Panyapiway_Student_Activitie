@@ -15,4 +15,6 @@ public interface PhoneRepository extends JpaRepository<Phone, Long>{
 	@Query(value = "SELECT * FORM PHONE WHERE PHONE.ID = ?1", nativeQuery = true)
 	public Phone findById(Long id);
 	
+	public Phone findByPersonId(long personId);
+	
 }

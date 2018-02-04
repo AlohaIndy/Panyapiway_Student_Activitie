@@ -2,7 +2,9 @@ package PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model;
 // default package
 // Generated 22 �.�. 2561, 22:56:21 by Hibernate Tools 4.3.5.Final
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
@@ -29,8 +32,9 @@ public class StudentHaveDuty implements java.io.Serializable {
 	private Duty duty;
 	@JsonSerialize(as = Student.class)
 	private Student student;
-	@JsonIgnore
-	private Set<StudentHaveDutyByYearClass> studentHaveDutyByYearClasses = new HashSet<StudentHaveDutyByYearClass>(0);
+	@JsonBackReference("StudentHaveDutyByYearClass")
+	@JsonProperty("StudentHaveDutyByYearClass")
+	private List<StudentHaveDutyByYearClass> studentHaveDutyByYearClasses = new ArrayList<>();
 
 	public StudentHaveDuty() {
 	}
@@ -42,7 +46,7 @@ public class StudentHaveDuty implements java.io.Serializable {
 	}
 
 	public StudentHaveDuty(long id, Duty duty, Student student,
-			Set<StudentHaveDutyByYearClass> studentHaveDutyByYearClasses) {
+			List<StudentHaveDutyByYearClass> studentHaveDutyByYearClasses) {
 		this.id = id;
 		this.duty = duty;
 		this.student = student;
@@ -81,11 +85,11 @@ public class StudentHaveDuty implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "studentHaveDuty")
-	public Set<StudentHaveDutyByYearClass> getStudentHaveDutyByYearClasses() {
+	public List<StudentHaveDutyByYearClass> getStudentHaveDutyByYearClasses() {
 		return this.studentHaveDutyByYearClasses;
 	}
 
-	public void setStudentHaveDutyByYearClasses(Set<StudentHaveDutyByYearClass> studentHaveDutyByYearClasses) {
+	public void setStudentHaveDutyByYearClasses(List<StudentHaveDutyByYearClass> studentHaveDutyByYearClasses) {
 		this.studentHaveDutyByYearClasses = studentHaveDutyByYearClasses;
 	}
 

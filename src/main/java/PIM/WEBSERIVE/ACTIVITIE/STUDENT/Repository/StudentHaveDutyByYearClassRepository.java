@@ -9,6 +9,8 @@ import PIM.WEBSERIVE.ACTIVITIE.STUDENT.Model.StudentHaveDutyByYearClass;
 public interface StudentHaveDutyByYearClassRepository extends JpaRepository<StudentHaveDutyByYearClass, Long> {
 
 	public List<StudentHaveDutyByYearClass> findAll();
+	
+	public StudentHaveDutyByYearClass findById(Long id);
 
 	public List<StudentHaveDutyByYearClass> findByStudentHaveDutyDutyId(int dutyId);
 
